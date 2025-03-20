@@ -1,0 +1,20 @@
+type Product {
+    ID: Int!
+    Name: String!
+    Price: Float!
+    Owner: User! # Reference to the user who owns the product
+}
+
+input ProductReq {
+    Name: String!
+    Price: Float!
+    UserID: Int!
+}
+
+extend type Query {
+    getProduct: [Product!]
+}
+
+extend type Mutation {
+    createProduct(input: ProductReq!): Product!
+}

@@ -1,0 +1,26 @@
+type User {
+    ID: Int!
+    Name: String!
+    Email: String!
+    Products: [Product!]! # One-to-many relationship with Product
+}
+
+
+input UserInfo {
+    Name: String!
+    Email: String!
+}
+
+
+type MessageResponse {
+    status: Boolean!
+    message: String!
+}
+
+extend type Query {
+    getAllUser: [User]!  # Return a list of users
+}
+
+extend type Mutation {
+    createUser(input: UserInfo): MessageResponse!
+}
